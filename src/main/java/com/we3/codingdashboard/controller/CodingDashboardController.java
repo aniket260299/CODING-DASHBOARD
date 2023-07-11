@@ -1,12 +1,11 @@
 package com.we3.codingdashboard.controller;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.web.bind.annotation.*;
-
 import com.we3.codingdashboard.model.CodingDashboard;
 import com.we3.codingdashboard.repository.CodingDashboardRepository;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/coding_dashboard")
