@@ -24,3 +24,5 @@ INSERT INTO Coding_Dashboard (title, solution, hint, revision_notes, link, diffi
 INSERT INTO Coding_Dashboard (title, solution, hint, revision_notes, link, difficulty, tags, date_created, date_updated) VALUES('title4', 'solution4', 'hint4', 'revisionNotes4', 'link4', 2, 'test', '2013-07-09 03:23:34.234', '2013-07-09 03:23:34.234');
 INSERT INTO Coding_Dashboard (title, solution, hint, revision_notes, link, difficulty, tags, date_created, date_updated) VALUES('title5', 'solution5', 'hint5', 'revisionNotes5', 'link5', 3, 'test', '2013-07-09 03:23:34.234', '2013-07-09 03:23:34.234');
 INSERT INTO Coding_Dashboard (title, solution, hint, revision_notes, link, difficulty, tags, date_created, date_updated) VALUES('title6', 'solution6', 'hint6', 'revisionNotes6', 'link6', 3, 'test', '2013-07-09 03:23:34.234', '2013-07-09 03:23:34.234');
+
+INSERT INTO User_Info (username, password, roles) VALUES ('test', '1234', 'ADMIN');
