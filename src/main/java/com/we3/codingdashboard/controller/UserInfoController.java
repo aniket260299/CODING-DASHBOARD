@@ -18,29 +18,22 @@ public class UserInfoController {
     }
 
     @GetMapping
-    public List<UserInfo> getAllUserInfo() {
+    public List<UserInfo> findAll() {
         return repository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<UserInfo> getAllUserInfoById(@PathVariable Long id) {
+    public Optional<UserInfo> findById(@PathVariable Long id) {
         return repository.findById(id);
     }
 
-    @PostMapping
-    public void createUserInfo(@RequestBody UserInfo userInfo) {
+    @RequestMapping(value = "", method = { RequestMethod.PUT, RequestMethod.POST })
+    public void addOrUpdate(@RequestBody UserInfo userInfo) {
         repository.save(userInfo);
     }
 
-    @PutMapping("/{id}")
-    public void updateUserInfo(@PathVariable Long id, @RequestBody UserInfo userInfo) {
-        if (repository.existsById(id)) {
-            repository.save(userInfo);
-        }
-    }
-
     @DeleteMapping("/{id}")
-    public void deleteUserById(@PathVariable Long id) {
+    public void deleteById(@PathVariable Long id) {
         if (repository.existsById(id)) {
             repository.deleteById(id);
         }
