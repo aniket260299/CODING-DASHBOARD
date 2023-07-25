@@ -22,7 +22,7 @@ public class CodingDashboardController {
     }
 
     @GetMapping("/{id}")
-    public Optional<CodingDashboard> findById(@PathVariable Integer id) {
+    public Optional<CodingDashboard> findById(@PathVariable Long id) {
         return repository.findById(id);
     }
 
@@ -32,14 +32,14 @@ public class CodingDashboardController {
     }
 
     @PutMapping("/{id}")
-    public void updateById(@RequestBody CodingDashboard codingDashboard, @PathVariable Integer id) {
+    public void updateById(@RequestBody CodingDashboard codingDashboard, @PathVariable Long id) {
         if (repository.existsById(id)) {
             repository.save(codingDashboard);
         }
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Integer id) {
+    public void deleteById(@PathVariable Long id) {
         if (repository.existsById(id)) {
             repository.deleteById(id);
         }
