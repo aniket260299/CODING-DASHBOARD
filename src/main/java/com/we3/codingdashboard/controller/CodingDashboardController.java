@@ -26,16 +26,9 @@ public class CodingDashboardController {
         return repository.findById(id);
     }
 
-    @PostMapping
-    public void add(@RequestBody CodingDashboard codingDashboard) {
+    @RequestMapping(value = "", method = { RequestMethod.PUT, RequestMethod.POST })
+    public void addOrUpdate(@RequestBody CodingDashboard codingDashboard) {
         repository.save(codingDashboard);
-    }
-
-    @PutMapping("/{id}")
-    public void updateById(@RequestBody CodingDashboard codingDashboard, @PathVariable Long id) {
-        if (repository.existsById(id)) {
-            repository.save(codingDashboard);
-        }
     }
 
     @DeleteMapping("/{id}")
