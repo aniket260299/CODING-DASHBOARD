@@ -1,6 +1,8 @@
 FROM gradle:jdk17-alpine AS builder
 COPY . .
 RUN gradle clean build
+RUN ["cd", "build"]
+RUN ["ls", "-lrt"]
 
 FROM openjdk:17.0.1-jdk-slim
 COPY --from=builder build/libs/coding-dashboard-0.0.1-SNAPSHOT.jar /app.jar
