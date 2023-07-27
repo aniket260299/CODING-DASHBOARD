@@ -29,20 +29,21 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorizeRequests) ->
-                        authorizeRequests
-                                .requestMatchers(new AntPathRequestMatcher("/h2-console/**"),
-                                        new AntPathRequestMatcher("/")).permitAll()
+                        authorizeRequests.requestMatchers(
+                                        AntPathRequestMatcher.antMatcher("/h2-console/**"),
+                                        AntPathRequestMatcher.antMatcher("/"))
+                                .permitAll()
                                 .anyRequest().authenticated())
-                .headers((HeadersConfigurer) ->
-                        HeadersConfigurer
-                                .frameOptions(FrameOptionsConfig::disable)
-                )
+                .headers((HeadersConfigurer) -> HeadersConfigurer.frameOptions(FrameOptionsConfig::disable))
                 .formLogin(withDefaults()).build();
     }
 
     @Bean
     JdbcUserDetailsManager users(DataSource dataSource, PasswordEncoder encoder) {
-        UserDetails admin = User.builder().username("admin").password(encoder.encode("password")).roles("ADMIN").build();
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password(encoder.encode("password")).
+                roles("ADMIN").build();
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
         jdbcUserDetailsManager.createUser(admin);
         return jdbcUserDetailsManager;
