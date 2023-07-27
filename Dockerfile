@@ -2,7 +2,6 @@ FROM gradle:jdk17-alpine AS builder
 COPY . .
 RUN ./gradlew clean build
 RUN cd build
-RUN cd libs
 RUN ls -lrt
 
 FROM openjdk:17.0.1-jdk-slim
