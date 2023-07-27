@@ -2,6 +2,7 @@ package com.we3.codingdashboard.controller;
 
 import com.we3.codingdashboard.model.CodingDashboard;
 import com.we3.codingdashboard.repository.CodingDashboardRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,12 +10,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/coding_dashboard")
+@AllArgsConstructor
 public class CodingDashboardController {
     private final CodingDashboardRepository repository;
-
-    public CodingDashboardController(CodingDashboardRepository repository) {
-        this.repository = repository;
-    }
 
     @GetMapping
     public List<CodingDashboard> findAll() {
@@ -26,7 +24,7 @@ public class CodingDashboardController {
         return repository.findById(id);
     }
 
-    @RequestMapping(value = "", method = { RequestMethod.PUT, RequestMethod.POST })
+    @RequestMapping(value = "", method = {RequestMethod.PUT, RequestMethod.POST})
     public void addOrUpdate(@RequestBody CodingDashboard codingDashboard) {
         repository.save(codingDashboard);
     }

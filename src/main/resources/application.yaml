@@ -1,7 +1,7 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
+    url: jdbc:h2:mem:coding_dashboard
+    username: admin
     password: password
     driverClassName: org.h2.Driver
   
