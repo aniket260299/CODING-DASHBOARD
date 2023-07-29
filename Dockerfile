@@ -1,7 +1,7 @@
 FROM gradle:jdk17-alpine AS builder
 WORKDIR /app
 COPY . /app/
-RUN ./gradlew clean build
+RUN ./gradlew clean build --refresh-dependencies
 
 FROM openjdk:17.0.1-jdk-slim
 WORKDIR /app
