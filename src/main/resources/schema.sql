@@ -12,7 +12,7 @@ constraint fk_authorities_users foreign key(username) references users(username)
 
 create unique index ix_auth_username on authorities (username,authority);
 
-create TABLE IF NOT EXISTS Coding_Dashboard (
+create TABLE IF NOT EXISTS coding_dashboard (
     id bigint auto_increment PRIMARY KEY,
     title VARCHAR(1000),
     solution VARCHAR(500000),
