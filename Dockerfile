@@ -1,7 +1,7 @@
 FROM gradle:jdk17-alpine AS builder
 WORKDIR /app
 COPY . /app/
-RUN ./gradlew clean build -Penv=prod
+RUN ./gradlew clean build -Penv=prod -Pdatasource_username="$datasource_username" -Pdatasource_password="$datasource_password"
 
 FROM openjdk:17.0.1-jdk-slim
 WORKDIR /app
