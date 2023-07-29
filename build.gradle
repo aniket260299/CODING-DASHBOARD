@@ -15,7 +15,8 @@ repositories {
     mavenCentral()
 }
 
-def isProd = System.getenv("SPRING_PROFILES_ACTIVE") == "prod"
+def isProd = (System.getenv("SPRING_PROFILES_ACTIVE") == "prod") ||
+        (project.hasProperty("env") && project.property("env") == "prod")
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
