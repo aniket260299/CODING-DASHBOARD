@@ -18,6 +18,8 @@ repositories {
 def isProd = (System.getenv("SPRING_PROFILES_ACTIVE") == "prod") ||
         (project.hasProperty("env") && project.property("env") == "prod")
 
+print("isProd: " + isProd)
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
