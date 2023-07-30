@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.we3'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 
 java {
     sourceCompatibility = '17'
@@ -15,8 +15,9 @@ repositories {
     mavenCentral()
 }
 
-def isProd = (System.getenv("SPRING_PROFILES_ACTIVE") == "prod") ||
-        (project.hasProperty("env") && project.property("env") == "prod")
+def isProd = System.getenv("SPRING_PROFILES_ACTIVE") == "prod"
+
+print("isProd: " + isProd)
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
