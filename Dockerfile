@@ -1,4 +1,9 @@
 FROM gradle:jdk17-alpine AS builder
+
+ENV datasource_password=${datasource_password}
+ENV datasource_username=${datasource_username}
+ENV SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+
 WORKDIR /app
 COPY . /app/
 RUN ./gradlew clean build
