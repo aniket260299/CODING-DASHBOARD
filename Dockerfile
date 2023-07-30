@@ -1,8 +1,16 @@
 FROM gradle:jdk17-alpine AS builder
+
+ARG datasource_password
+ARG datasource_username
+ARG SPRING_PROFILES_ACTIVE
+
+ENV datasource_password=${datasource_password}
+ENV datasource_username=${datasource_username}
+ENV SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+
 WORKDIR /app
 COPY . /app/
-RUN echo $datasource_username
-RUN ./gradlew clean build -Penv=prod -Pdatasource_username="$datasource_username" -Pdatasource_password="$datasource_password"
+RUN ./gradlew clean build
 
 FROM openjdk:17.0.1-jdk-slim
 WORKDIR /app

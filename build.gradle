@@ -15,8 +15,7 @@ repositories {
     mavenCentral()
 }
 
-def isProd = (System.getenv("SPRING_PROFILES_ACTIVE") == "prod") ||
-        (project.hasProperty("env") && project.property("env") == "prod")
+def isProd = System.getenv("SPRING_PROFILES_ACTIVE") == "prod"
 
 print("isProd: " + isProd)
 
