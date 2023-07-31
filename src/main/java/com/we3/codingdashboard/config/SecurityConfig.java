@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -30,7 +31,10 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(withDefaults())
-                .authorizeHttpRequests((authorizeRequests) -> authorizeRequests.anyRequest().authenticated())
+                .authorizeHttpRequests((authorizeRequests) ->
+                        authorizeRequests.requestMatchers(AntPathRequestMatcher.antMatcher("/**"))
+                                .permitAll()
+                                .anyRequest().authenticated())
                 .headers((HeadersConfigurer) -> HeadersConfigurer.frameOptions(FrameOptionsConfig::disable))
                 .formLogin(withDefaults()).build();
     }
