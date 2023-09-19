@@ -25,8 +25,8 @@ public class CodingDashboardController {
     }
 
     @RequestMapping(value = "", method = {RequestMethod.PUT, RequestMethod.POST})
-    public void addOrUpdate(@RequestBody CodingDashboard codingDashboard) {
-        repository.save(codingDashboard);
+    public CodingDashboard addOrUpdate(@RequestBody CodingDashboard codingDashboard) {
+        return repository.save(codingDashboard);
     }
 
     @DeleteMapping("/{id}")

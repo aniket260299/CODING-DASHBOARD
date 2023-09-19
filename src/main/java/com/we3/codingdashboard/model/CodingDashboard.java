@@ -2,7 +2,7 @@ package com.we3.codingdashboard.model;
 
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 public record CodingDashboard(
         @Id Long id,
@@ -13,7 +13,7 @@ public record CodingDashboard(
         String link,
         Integer difficulty,
         String tags,
-        LocalDateTime date_created,
-        LocalDateTime date_updated
+        Timestamp date_created,
+        Timestamp date_updated
 ) {
 }
