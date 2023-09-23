@@ -9,11 +9,12 @@ public record CodingDashboard(
         String title,
         String solution,
         String hint,
-        String revision_notes,
+        String notes,
         String link,
         Integer difficulty,
         String tags,
         Timestamp date_created,
-        Timestamp date_updated
+        Timestamp date_updated,
+        String username
 ) {
 }
