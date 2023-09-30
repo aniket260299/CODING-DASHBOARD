@@ -69,14 +69,14 @@ public class SecurityConfig {
     }
 
     @Bean
-    UserDetailsService userDetailsService(DataSource dataSource, PasswordEncoder encoder) {
+    JdbcUserDetailsManager jdbcUserDetailsManager(DataSource dataSource, PasswordEncoder encoder) {
         return new JdbcUserDetailsManager(dataSource);
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService) {
+    public AuthenticationManager authenticationManager(JdbcUserDetailsManager jdbcUserDetailsManager) {
         var authenticationProvider = new DaoAuthenticationProvider(passwordEncoder());
-        authenticationProvider.setUserDetailsService(userDetailsService);
+        authenticationProvider.setUserDetailsService(jdbcUserDetailsManager);
         return new ProviderManager(authenticationProvider);
     }
 
