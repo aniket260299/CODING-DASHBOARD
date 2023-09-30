@@ -4,7 +4,9 @@ spring:
     username: ${datasource_username}
     password: ${datasource_password}
 
-
   sql:
     init:
       mode: never
+
+jwt:
+  key: ${jwt_key}

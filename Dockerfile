@@ -3,10 +3,12 @@ FROM gradle:jdk17-alpine AS builder
 ARG datasource_password
 ARG datasource_username
 ARG SPRING_PROFILES_ACTIVE
+ARG jwt_key
 
 ENV datasource_password=${datasource_password}
 ENV datasource_username=${datasource_username}
 ENV SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+ENV jwt_key=${jwt_key}
 
 WORKDIR /app
 COPY . /app/

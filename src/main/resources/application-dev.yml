@@ -9,3 +9,6 @@ spring:
     console:
       enabled: true
       settings.web-allow-others: true
+
+jwt:
+  key: thisIsKeyIsOnlyForTesting123456789000000000000000000000000000000
