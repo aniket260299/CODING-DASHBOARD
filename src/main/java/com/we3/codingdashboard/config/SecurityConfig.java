@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
@@ -45,9 +44,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers(antMatcher("/"),
-                                antMatcher("/api/auth/token"),
-                                antMatcher("/api/coding-dashboard/**")
+                        .requestMatchers(antMatcher("/h2-console/**"),
+                                antMatcher("/api/auth/**")
                         )
                         .permitAll()
                         .anyRequest().authenticated())
