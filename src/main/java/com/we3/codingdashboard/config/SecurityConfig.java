@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
@@ -46,8 +45,7 @@ public class SecurityConfig {
                 .cors(withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(antMatcher("/h2-console/**"),
-                                antMatcher("/api/auth/**"),
-                                antMatcher("/api/coding-dashboard/**")
+                                antMatcher("/api/auth/**")
                         )
                         .permitAll()
                         .anyRequest().authenticated())

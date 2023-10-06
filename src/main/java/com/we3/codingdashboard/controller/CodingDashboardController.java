@@ -2,6 +2,7 @@ package com.we3.codingdashboard.controller;
 
 import com.we3.codingdashboard.model.CodingDashboard;
 import com.we3.codingdashboard.repository.CodingDashboardRepository;
+import com.we3.codingdashboard.service.TokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +14,11 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CodingDashboardController {
     private final CodingDashboardRepository repository;
+    private final TokenService tokenService;
 
     @GetMapping
     public List<CodingDashboard> findAll() {
-        return repository.findAll();
+        return repository.findByUsername(tokenService.getCurrentUserName());
     }
 
     @GetMapping("/{id}")
