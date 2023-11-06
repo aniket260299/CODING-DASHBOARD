@@ -31,6 +31,27 @@ public class CodingDashboardController {
         return repository.save(codingDashboard);
     }
 
+    @RequestMapping(value = "/import", method = {RequestMethod.POST})
+    public String importDashboardList(@RequestBody List<CodingDashboard> result) {
+        String username = tokenService.getCurrentUserName();
+        for (CodingDashboard item : result) {
+            CodingDashboard record = new CodingDashboard(
+                    null,
+                    item.title(),
+                    item.solution(),
+                    item.hint(),
+                    item.notes(),
+                    item.link(),
+                    item.difficulty(),
+                    item.tags(),
+                    item.date_created(),
+                    item.date_updated(),
+                    username);
+            repository.save(record);
+        }
+        return "imported successfully";
+    }
+
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
         if (repository.existsById(id)) {
