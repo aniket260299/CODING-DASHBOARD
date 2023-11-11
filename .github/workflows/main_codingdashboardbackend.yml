@@ -1,5 +1,12 @@
 name: codingdashboardbackend
 
+env:
+  SPRING_PROFILES_ACTIVE: ${{ secrets.SPRING_PROFILES_ACTIVE }}
+  datasource_username: ${{ secrets.DATASOURCE_USERNAME }}
+  datasource_password: ${{ secrets.DATASOURCE_PASSWORD }}
+  PORT: ${{ secrets.PORT }}
+  jwt_key: ${{ secrets.JWT_KEY }}
+
 on:
   push:
     branches:
@@ -19,12 +26,6 @@ jobs:
           java-version: '17'
 
       - name: Build with Gradle
-        env:
-          SPRING_PROFILES_ACTIVE: ${{ secrets.SPRING_PROFILES_ACTIVE }}
-          datasource_username: ${{ secrets.DATASOURCE_USERNAME }}
-          datasource_password: ${{ secrets.DATASOURCE_PASSWORD }}
-          PORT: ${{ secrets.PORT }}
-          jwt_key: ${{ secrets.JWT_KEY }}
         run: ./gradlew clean build
 
       - name: Upload artifact for deployment job
@@ -54,8 +55,3 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A47F5664D16C4377B1E29650F88AD42D }}
           package: '*.jar'
-          SPRING_PROFILES_ACTIVE: ${{ secrets.SPRING_PROFILES_ACTIVE }}
-          datasource_username: ${{ secrets.DATASOURCE_USERNAME }}
-          datasource_password: ${{ secrets.DATASOURCE_PASSWORD }}
-          PORT: ${{ secrets.PORT }}
-          jwt_key: ${{ secrets.JWT_KEY }}
