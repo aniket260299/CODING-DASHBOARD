@@ -36,7 +36,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    if (isProd) runtimeOnly 'com.mysql:mysql-connector-j'
+    if (isProd) runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
     else runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

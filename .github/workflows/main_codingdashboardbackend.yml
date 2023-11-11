@@ -1,12 +1,13 @@
 name: codingdashboardbackend
 
 env:
-  SPRING_PROFILES_ACTIVE: ${{ secrets.SPRING_PROFILES_ACTIVE }}
-  datasource_username: ${{ secrets.DATASOURCE_USERNAME }}
-  datasource_password: ${{ secrets.DATASOURCE_PASSWORD }}
-  PORT: ${{ secrets.PORT }}
+  SPRING_PROFILES_ACTIVE: ${{ vars.SPRING_PROFILES_ACTIVE }}
+  PORT: ${{ vars.PORT }}
   jwt_key: ${{ secrets.JWT_KEY }}
-
+  datasource_driver: ${{ vars.DATASOURCE_DRIVER }}
+  datasource_url: ${{ vars.DATASOURCE_URL }}
+  datasource_username: ${{ vars.DATASOURCE_USERNAME }}
+  datasource_password: ${{ secrets.DATASOURCE_PASSWORD }}
 on:
   push:
     branches:
