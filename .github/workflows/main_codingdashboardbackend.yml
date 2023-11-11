@@ -17,14 +17,14 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '17'
+
+      - name: Build with Gradle
         env:
           SPRING_PROFILES_ACTIVE: ${{ secrets.SPRING_PROFILES_ACTIVE }}
           datasource_username: ${{ secrets.DATASOURCE_USERNAME }}
           datasource_password: ${{ secrets.DATASOURCE_PASSWORD }}
           PORT: ${{ secrets.PORT }}
           jwt_key: ${{ secrets.JWT_KEY }}
-
-      - name: Build with Gradle
         run: ./gradlew clean build
 
       - name: Upload artifact for deployment job
