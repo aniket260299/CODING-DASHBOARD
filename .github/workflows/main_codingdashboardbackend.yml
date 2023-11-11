@@ -8,6 +8,7 @@ env:
   datasource_url: ${{ vars.DATASOURCE_URL }}
   datasource_username: ${{ vars.DATASOURCE_USERNAME }}
   datasource_password: ${{ secrets.DATASOURCE_PASSWORD }}
+  datasource_dependency: ${{ DATASOURCE_DEPENDENCY }}
 on:
   push:
     branches:

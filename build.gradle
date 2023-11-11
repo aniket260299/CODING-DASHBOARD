@@ -25,9 +25,11 @@ repositories {
     mavenCentral()
 }
 
-def isProd = System.getenv("SPRING_PROFILES_ACTIVE") == "prod"
+def isProd = System.getenv("SPRING_PROFILES_ACTIVE") == "prod" &&
+        System.getenv("datasource_dependency") != null
 
-print("isProd: " + isProd)
+if(isProd)
+    print("> PROD\n> datasource_dependency: " + System.getenv("datasource_dependency"))
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -36,7 +38,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    if (isProd) runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+    if (isProd) runtimeOnly System.getenv("datasource_dependency")
     else runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
