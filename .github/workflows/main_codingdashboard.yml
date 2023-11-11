@@ -3,11 +3,11 @@
 
 name: Build and deploy JAR app to Azure Web App - codingdashboard
 env:
-  SPRING_PROFILES_ACTIVE: ${{ vars.SPRING_PROFILES_ACTIVE }}
-  datasource_username: ${{ vars.DATASOURCE_USERNAME }}
-  datasource_password: ${{ vars.DATASOURCE_PASSWORD }}
-  PORT: ${{ vars.PORT }}
-  jwt_key: ${{ vars.JWT_KEY }}
+  SPRING_PROFILES_ACTIVE: ${{ secrets.SPRING_PROFILES_ACTIVE }}
+  datasource_username: ${{ secrets.DATASOURCE_USERNAME }}
+  datasource_password: ${{ secrets.DATASOURCE_PASSWORD }}
+  PORT: ${{ secrets.PORT }}
+  jwt_key: ${{ secrets.JWT_KEY }}
 
 on:
   push:
@@ -57,3 +57,8 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DDA57A0C38984916BCD61B2812D3E37F }}
           package: '*.jar'
+          SPRING_PROFILES_ACTIVE: ${{ secrets.SPRING_PROFILES_ACTIVE }}
+          datasource_username: ${{ secrets.DATASOURCE_USERNAME }}
+          datasource_password: ${{ secrets.DATASOURCE_PASSWORD }}
+          PORT: ${{ secrets.PORT }}
+          jwt_key: ${{ secrets.JWT_KEY }}
