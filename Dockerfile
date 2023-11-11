@@ -7,6 +7,7 @@ ARG datasource_url
 ARG datasource_password
 ARG datasource_username
 ARG PORT
+ARG datasource_dependency
 
 ENV SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
 ENV PORT=${PORT}
@@ -15,6 +16,7 @@ ENV datasource_driver=${datasource_driver}
 ENV datasource_url=${datasource_url}
 ENV datasource_password=${datasource_password}
 ENV datasource_username=${datasource_username}
+ENV datasource_dependency=${datasource_dependency}
 
 WORKDIR /app
 COPY . /app/
