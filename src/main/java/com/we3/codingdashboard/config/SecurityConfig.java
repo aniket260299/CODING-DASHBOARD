@@ -45,7 +45,8 @@ public class SecurityConfig {
                 .cors(withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(antMatcher("/h2-console/**"),
-                                antMatcher("/api/auth/**")
+                                antMatcher("/api/auth/**"),
+                                antMatcher("/home")
                         )
                         .permitAll()
                         .anyRequest().authenticated())
