@@ -17,6 +17,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '17'
+        env:
           SPRING_PROFILES_ACTIVE: ${{ secrets.SPRING_PROFILES_ACTIVE }}
           datasource_username: ${{ secrets.DATASOURCE_USERNAME }}
           datasource_password: ${{ secrets.DATASOURCE_PASSWORD }}
@@ -53,6 +54,7 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A47F5664D16C4377B1E29650F88AD42D }}
           package: '*.jar'
+        env:
           SPRING_PROFILES_ACTIVE: ${{ secrets.SPRING_PROFILES_ACTIVE }}
           datasource_username: ${{ secrets.DATASOURCE_USERNAME }}
           datasource_password: ${{ secrets.DATASOURCE_PASSWORD }}
