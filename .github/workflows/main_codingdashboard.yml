@@ -2,6 +2,12 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy JAR app to Azure Web App - codingdashboard
+env:
+  SPRING_PROFILES_ACTIVE: ${{SPRING_PROFILES_ACTIVE}}
+  datasource_username: ${{DATASOURCE_USERNAME}}
+  datasource_password: ${{DATASOURCE_PASSWORD}}
+  PORT: ${{PORT}}
+  jwt_key: ${{JWT_KEY}}
 
 on:
   push:
@@ -12,12 +18,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment:
-      SPRING_PROFILES_ACTIVE: ${{SPRING_PROFILES_ACTIVE}}
-      datasource_username: ${{DATASOURCE_USERNAME}}
-      datasource_password: ${{DATASOURCE_PASSWORD}}
-      PORT: ${{PORT}}
-      jwt_key: ${{JWT_KEY}}
 
     steps:
       - uses: actions/checkout@v4
@@ -42,11 +42,6 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-      SPRING_PROFILES_ACTIVE: ${{SPRING_PROFILES_ACTIVE}}
-      datasource_username: ${{DATASOURCE_USERNAME}}
-      datasource_password: ${{DATASOURCE_PASSWORD}}
-      PORT: ${{PORT}}
-      jwt_key: ${{JWT_KEY}}
 
     steps:
       - name: Download artifact from build job
