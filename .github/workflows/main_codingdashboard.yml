@@ -2,6 +2,12 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy JAR app to Azure Web App - codingdashboard
+env:
+  SPRING_PROFILES_ACTIVE: ${{ vars.SPRING_PROFILES_ACTIVE }}
+  datasource_username: ${{ vars.DATASOURCE_USERNAME }}
+  datasource_password: ${{ vars.DATASOURCE_PASSWORD }}
+  PORT: ${{ vars.PORT }}
+  jwt_key: ${{ vars.JWT_KEY }}
 
 on:
   push:
@@ -22,12 +28,6 @@ jobs:
           java-version: '17'
 
       - name: Build with Gradle
-        env:
-          SPRING_PROFILES_ACTIVE: ${{ vars.SPRING_PROFILES_ACTIVE }}
-          datasource_username: ${{ vars.DATASOURCE_USERNAME }}
-          datasource_password: ${{ vars.DATASOURCE_PASSWORD }}
-          PORT: ${{ vars.PORT }}
-          jwt_key: ${{ vars.JWT_KEY }}
         run: ./gradlew clean build
 
       - name: Upload artifact for deployment job
