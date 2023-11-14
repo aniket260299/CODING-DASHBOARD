@@ -46,7 +46,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(antMatcher("/h2-console/**"),
                                 antMatcher("/api/auth/**"),
-                                antMatcher("/home")
+                                antMatcher("/")
                         )
                         .permitAll()
                         .anyRequest().authenticated())
