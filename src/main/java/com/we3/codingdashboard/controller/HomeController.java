@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class HomeController {
     @GetMapping
-    public String sayHello() {
-        return "Hello 👋, Application is running";
+    public Boolean isAlive() {
+        return true;
     }
 }
