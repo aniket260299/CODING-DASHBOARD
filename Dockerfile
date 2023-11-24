@@ -24,6 +24,6 @@ RUN ./gradlew clean build
 
 FROM openjdk:17.0.1-jdk-slim
 WORKDIR /app
-COPY --from=builder app/build/libs/*.jar /app/coding-dashboard.jar
+COPY --from=builder app/build/libs/*.jar /app/coding_dashboard.jar
 EXPOSE ${PORT}
-ENTRYPOINT ["java","-jar","/app/coding-dashboard.jar"]
+ENTRYPOINT ["java","-jar","/app/coding_dashboard.jar"]

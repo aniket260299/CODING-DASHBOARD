@@ -1,4 +1,4 @@
-package com.we3.codingdashboard.service;
+package coding.dashboard.auth;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -11,6 +11,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +42,7 @@ public class TokenService {
             Jwt decodedToken = decoder.decode(token);
             Instant now = Instant.now();
             Instant expiry = decodedToken.getExpiresAt();
+            assert expiry != null;
             if (now.compareTo(expiry) < 0) {
                 return true;
             }
@@ -51,7 +53,7 @@ public class TokenService {
     }
 
     public String getCurrentUserName() {
-        String bearerToken = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+        String bearerToken = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes()))
                 .getRequest().getHeader("Authorization");
         String token = bearerToken.substring(bearerToken.indexOf(" ") + 1).trim();
         return decoder.decode(token).getClaimAsString("sub");

@@ -1,6 +1,5 @@
-package com.we3.codingdashboard.controller;
+package coding.dashboard.auth;
 
-import com.we3.codingdashboard.model.UserInfo;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +20,7 @@ public class UserController {
     public UserInfo findByUsername(@PathVariable String username) {
         UserDetails userDetails = jdbcUserDetailsManager.loadUserByUsername(username);
         Collection<? extends GrantedAuthority> authorities =  userDetails.getAuthorities();
-        StringBuffer roles = new StringBuffer();
+        StringBuilder roles = new StringBuilder();
         for(GrantedAuthority authority : authorities){
             if(roles.isEmpty())
                 roles.append(authority.getAuthority().substring(5));

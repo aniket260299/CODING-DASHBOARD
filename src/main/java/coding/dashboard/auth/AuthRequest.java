@@ -1,4 +1,4 @@
-package com.we3.codingdashboard.model;
+package coding.dashboard.auth;
 
 public record AuthRequest(String username, String password) {
 

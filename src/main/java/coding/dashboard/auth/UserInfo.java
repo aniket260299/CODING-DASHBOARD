@@ -1,4 +1,4 @@
-package com.we3.codingdashboard.model;
+package coding.dashboard.auth;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

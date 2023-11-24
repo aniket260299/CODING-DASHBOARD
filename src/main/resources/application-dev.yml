@@ -10,5 +10,8 @@ spring:
       enabled: true
       settings.web-allow-others: true
 
+server:
+  port: 8080
+
 jwt:
   key: thisIsKeyIsOnlyForTesting123456789000000000000000000000000000000

@@ -1,4 +1,4 @@
-package com.we3.codingdashboard.config;
+package coding.dashboard.config;
 
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +27,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.sql.DataSource;
-
 import java.util.List;
 
 import static org.springframework.security.config.Customizer.withDefaults;

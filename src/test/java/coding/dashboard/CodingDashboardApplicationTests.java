@@ -1,4 +1,4 @@
-package com.we3.codingdashboard;
+package coding.dashboard;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
