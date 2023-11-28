@@ -38,3 +38,4 @@ out/
 
 ### LOCAL ###
 local/
+.DS_Store
